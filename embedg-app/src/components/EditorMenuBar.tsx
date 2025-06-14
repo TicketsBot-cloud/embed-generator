@@ -7,9 +7,11 @@ import {
 import { usePremiumGuildFeatures } from "../util/premium";
 import EditorUndoButtons from "./EditorUndoButtons";
 import EditorIconButton from "./EditorIconButton";
+import EditorComponentsV2Toggle from "./EditorComponentsV2Toggle";
 
 export default function EditorMenuBar() {
   const aiAssistantAllowed = usePremiumGuildFeatures()?.ai_assistant;
+  const componentsV2Allowed = usePremiumGuildFeatures()?.components_v2;
 
   return (
     <div className="flex justify-between items-center mb-5 mt-5">
@@ -26,6 +28,7 @@ export default function EditorMenuBar() {
             <SparklesIcon />
           </EditorIconButton>
         )}
+        {componentsV2Allowed && <EditorComponentsV2Toggle />}
         <EditorIconButton label="Share Message" href="/editor/share">
           <LinkIcon />
         </EditorIconButton>
